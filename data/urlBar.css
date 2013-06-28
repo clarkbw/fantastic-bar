@@ -1,0 +1,26 @@
+
+body {
+  background-color: white;
+}
+
+ul li {
+  list-style: none outside none;
+}
+
+ul li:hover {
+  background-color: blue;
+}
+
+#results {
+  width: 50%;
+}
+
+#preview {
+  display: inline-block;
+  position: absolute;
+  width: 50%;
+  background-color: red;
+  height: 100%;
+  right: 0px;
+  top: 0px;
+}
