@@ -5,6 +5,10 @@ function $(id) document.getElementById(id);
 const queryNum = 0;
 let lastInterval;
 
+self.port.on('size', function({ height }) {
+  let output = $('results-list').setAttribute('style', 'max-height: ' + height + 'px');
+});
+
 self.port.on('query', function({ query, results, previews }) {
   let output = $('results-list');
   let preview_out = $('preview');
