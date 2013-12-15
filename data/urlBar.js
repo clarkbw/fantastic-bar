@@ -9,6 +9,16 @@ self.port.on('size', function({ height }) {
   let output = $('results-list').setAttribute('style', 'max-height: ' + height + 'px');
 });
 
+self.port.on('show-preview', function({ url }) {
+  let frames = document.getElementsByTagName("iframe");
+  for (let i = frames.length - 1; i >= 0; i--) {
+    let frame = frames[i];
+    if (frame.src == url) {
+      frame.removeAttribute('style');
+    }
+  }
+});
+
 self.port.on('query', function({ query, results, previews }) {
   let output = $('results-list');
   let preview_out = $('preview');
@@ -21,7 +31,7 @@ self.port.on('query', function({ query, results, previews }) {
   let count = 0;
   let newPrewviewOutput = '';
   previews.forEach(function({ url }) {
-    newPrewviewOutput += '<iframe id="frame-' + count++ + '" data-url="'+url+'" frameborder="0" scrolling="yes" marginheight="0" marginwidth="0" src="' + url + '"' + (count == previews.length ? ' class="slide"' : '') + '></iframe>';
+    newPrewviewOutput += '<iframe id="frame-' + count++ + '" style="visibility: hidden;" data-url="'+url+'" frameborder="0" scrolling="yes" marginheight="0" marginwidth="0" src="' + url + '"' + (count == previews.length ? ' class="slide"' : '') + '></iframe>';
   });
   preview_out.innerHTML = newPrewviewOutput;
 

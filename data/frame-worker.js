@@ -1,6 +1,5 @@
 
 function setup() {
-  console.log('frame setup ' + window.location.href);
   for(var i = 0; i < document.links.length; i++) {
 	let link = document.links[i];
 	link.addEventListener('click', function(evt) {
