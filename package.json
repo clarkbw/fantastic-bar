@@ -4,7 +4,7 @@
   "id": "fantastic-bar@erikvold.com",
   "author": "Erik Vold",
   "license": "MPL 2.0",
-  "version": "0.5",
+  "version": "0.5.1",
   "dependencies": [
     "pathfinder"
   ]
