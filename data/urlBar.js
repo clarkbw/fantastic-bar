@@ -3,19 +3,51 @@
 function $(id) document.getElementById(id);
 
 const queryNum = 0;
+let lastInterval;
 
-const results = $('results-list');
-const preview = $('preview');
-
-self.port.on('query', function(msg) {
+self.port.on('query', function({ query, results, previews }) {
+  let output = $('results-list');
+  let preview_out = $('preview');
   // clear old results
-  results.innerHTML = '';
+  output.innerHTML = '';
+  preview_out.innerHTML = '';
 
   // clear the preview
   // preview.innerHTML = '';
+  let count = 0;
+  let newPrewviewOutput = '';
+  previews.forEach(function({ url }) {
+    newPrewviewOutput += '<iframe id="frame-' + count++ + '" data-url="'+url+'" frameborder="0" scrolling="yes" marginheight="0" marginwidth="0" src="' + url + '"' + (count == previews.length ? ' class="slide"' : '') + '></iframe>';
+  });
+  preview_out.innerHTML = newPrewviewOutput;
 
-  let li = document.createElement('li');
-  li.innerHTML = msg.value;
-  results.appendChild(li);
-});
+  let frames = document.getElementsByTagName( "iframe" );
+
+  let displayed = count - 1;
+  clearInterval(lastInterval);
+
+  lastInterval = setInterval(function() {
+    let oldD = frames[displayed];
+
+    oldD && oldD.setAttribute('class', 'slide-off');
+
+    let newI = (--displayed < 0 ? (displayed = previews.length - 1) : displayed);
+    let newD = frames[newI];
+
+    newD && newD.setAttribute('class', 'slide');
+  }, 5000);
+
+  results.forEach(function(result) {
+    let li = document.createElement('li');
+    li.innerHTML = '<span class="link-title">' + result.title + '</span><span class="link">' + result.url + '</span>';
+    li.addEventListener('click', function() {
+      self.port.emit('goto', result);
+    }, false);
+    output.appendChild(li);
+  })
+});	
+
+function shouldStop() {
+  
+}
 
