@@ -7,5 +7,27 @@
   "version": "0.6.6",
   "dependencies": [
     "pathfinder"
-  ]
+  ],
+  "permissions": {
+  	"cross-domain-content": ["https://*", "http://*"]
+  },
+  "preferences": [{
+    "name": "ignoreTabs",
+    "title": "Ignore Tabs",
+    "description": "",
+    "type": "bool",
+    "value": false
+  }, {
+    "name": "ignoreHistory",
+    "title": "Ignore History",
+    "description": "",
+    "type": "bool",
+    "value": false
+  }, {
+    "name": "ignoreBookmarks",
+    "title": "Ignore Bookmarks",
+    "description": "",
+    "type": "bool",
+    "value": false
+  }]
 }
