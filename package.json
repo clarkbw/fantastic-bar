@@ -29,5 +29,11 @@
     "description": "",
     "type": "bool",
     "value": false
+  }, {
+    "name": "ignoreSearchSuggestions",
+    "title": "Ignore Search Suggestions",
+    "description": "",
+    "type": "bool",
+    "value": false
   }]
 }
