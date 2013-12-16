@@ -1,13 +1,28 @@
 
 function setup() {
-  for(var i = 0; i < document.links.length; i++) {
-	let link = document.links[i];
-	link.addEventListener('click', function(evt) {
-      self.port.emit('openURL', { url: link.href, base: window.location.href })
-      evt.stopPropagation();
-      return false;
-    }, true);
+  if (!window.document || !window.document.body) {
+    return;
   }
+
+  window.document.body.addEventListener('click', function(e) {
+    let { target } = e;
+    target = getLink({target: target});
+    if (target) {
+      self.port.emit('openURL', { url: target.href, base: window.location.href })
+      e.stopPropagation();
+      return false;
+    }
+  }, true);
+}
+
+function getLink({target}) {
+  if (target.tagName == 'A') {
+  	return target;
+  }
+  if (target.parent) {
+  	return getLink({ target: target.parentNode })
+  }
+  return undefined;
 }
 
 if (window.document.readyState != 'complete')

@@ -49,7 +49,7 @@ self.port.on('query', function({ query, results, previews }) {
     let newD = frames[newI];
 
     newD && newD.setAttribute('class', 'slide');
-  }, 5000);
+  }, 10000);
 
   results.forEach(function(result) {
     let li = document.createElement('li');
