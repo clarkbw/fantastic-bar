@@ -59,9 +59,9 @@ self.port.on('query', function({ query, results, previews }) {
     }, false);
     output.appendChild(li);
   })
-});	
+});
 
 function shouldStop() {
-  
+
 }
 
