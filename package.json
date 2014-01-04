@@ -12,6 +12,12 @@
   	"cross-domain-content": ["https://*", "http://*"]
   },
   "preferences": [{
+      "name": "disablePreviews",
+      "title": "Disable Previews",
+      "description": "",
+      "type": "bool",
+      "value": false
+    }, {
     "name": "ignoreTabs",
     "title": "Ignore Tabs",
     "description": "",

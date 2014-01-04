@@ -33,7 +33,15 @@ self.port.on('query', function({ query, results, previews }) {
   previews.forEach(function({ url }) {
     newPrewviewOutput += '<iframe id="frame-' + count++ + '" style="visibility: hidden;" data-url="'+url+'" frameborder="0" scrolling="yes" marginheight="0" marginwidth="0" src="' + url + '"' + (count == previews.length ? ' class="slide"' : '') + '></iframe>';
   });
-  preview_out.innerHTML = newPrewviewOutput;
+  if (newPrewviewOutput.length) {
+    $('results').removeAttribute('style');
+    preview_out.removeAttribute('style');
+    preview_out.innerHTML = newPrewviewOutput;
+  }
+  else {
+    $('results').setAttribute('style', 'width: 100%; max-width: 100%;');
+    preview_out.setAttribute('style', 'display: none;');
+  }
 
   let frames = document.getElementsByTagName( "iframe" );
 
