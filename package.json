@@ -4,9 +4,10 @@
   "id": "fantastic-bar@erikvold.com",
   "author": "Erik Vold",
   "license": "MPL 2.0",
-  "version": "0.6.7",
+  "version": "0.7",
   "dependencies": [
-    "pathfinder"
+    "pathfinder",
+    "addon-communication"
   ],
   "permissions": {
   	"cross-domain-content": ["https://*", "http://*"]
