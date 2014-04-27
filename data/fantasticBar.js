@@ -19,7 +19,7 @@ self.port.on('show-preview', function({ url }) {
   }
 });
 
-self.port.on('query', function({ query, results, previews }) {
+self.port.on('query', function({ query, results }) {
   let output = $('results-list');
   let preview_out = $('preview');
   // clear old results
@@ -28,6 +28,7 @@ self.port.on('query', function({ query, results, previews }) {
 
   // clear the preview
   // preview.innerHTML = '';
+  /*
   let count = 0;
   let newPrewviewOutput = '';
   previews.forEach(function({ url }) {
@@ -42,12 +43,13 @@ self.port.on('query', function({ query, results, previews }) {
     $('results').setAttribute('style', 'width: 100%; max-width: 100%;');
     preview_out.setAttribute('style', 'display: none;');
   }
+  */
 
   let frames = document.getElementsByTagName( "iframe" );
 
+/*
   let displayed = count - 1;
   clearInterval(lastInterval);
-
   lastInterval = setInterval(function() {
     let oldD = frames[displayed];
 
@@ -58,6 +60,7 @@ self.port.on('query', function({ query, results, previews }) {
 
     newD && newD.setAttribute('class', 'slide');
   }, 10000);
+*/
 
   results.forEach(function(result) {
     let li = document.createElement('li');
