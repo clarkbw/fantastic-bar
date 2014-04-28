@@ -5,7 +5,7 @@ body {
 }
 
 ul {
-  background: -moz-linear-gradient(top, #EAEFF2,  #D4DDE4); 
+  background: -moz-linear-gradient(top, #EAEFF2,  #D4DDE4);
   margin: 0;
   padding: 0;
 }
@@ -58,7 +58,6 @@ iframe {
   position: absolute;
   top: 0;
   height: 100%;
-  left: -100%;
   width: 100%;
     animation: slide 0.5s forwards;
     animation-delay: 2s;
